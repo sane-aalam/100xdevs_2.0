@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // then and catch method for populating the "finalSum" div
+      function populateDiv1() {
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+
+        // Make a fetch API call to the backend
+        fetch("<https://sum-server.100xdevs.com/sum?a=>" + a + "&b=" + b).then(
+          function (response) {
+            // Parse the response as text
+            response.text().then(function (ans) {
+              // Display the result in the "finalSum" div
+              document.getElementById("finalSum").innerHTML = ans;
+            });
+          }
+        );
+      }
+
+      // Async function for populating the "finalSum" div
+      async function populateDiv() {
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+        // Promise {<pending>}
+        // We have to resolve this promise using Async/Await
+        const responseData = await fetch(
+          "<https://sum-server.100xdevs.com/sum?a=>" + a + "&b=" + b
+        );
+        const ans = await responseData.text();
+        // Display the result in the "finalSum" div
+        document.getElementById("finalSum").innerHTML = ans;
+      }
+
+      // Axios (used into reactjs)
+      // axios.get("https://jsonplaceholder.typicode.com/posts/5")
+    </script>
+  </head>
+  <body>
+    <input id="firstNumber" type="text" placeholder="First number" />
+    <input id="secondNumber" type="text" placeholder="Second number" />
+
+    <button onclick="populateDiv()">Calculate sum</button>
+
+    <div id="finalSum"></div>
+  </body>
+</html>

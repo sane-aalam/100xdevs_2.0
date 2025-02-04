@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="firstNumber"
+      id="firstNumber"
+      placeholder="Enter the first Number"
+    />
+    <br />
+    <br />
+    <input
+      type="text"
+      name="secondNumber"
+      id="secondNumber"
+      placeholder="Enter the second Number"
+    />
+    <br />
+    <br />
+    <button onclick="CalculatedSum()">Calculated Sum</button>
+    <div id="finalSum"></div>
+  </body>
+  <script>
+    function CalculatedSum() {
+      const firstNumber = document.getElementById("firstNumber");
+      const secondNumber = document.getElementById("secondNumber");
+      const finalSum = document.getElementById("finalSum");
+
+      const firstNumberValue = firstNumber.value;
+      const secondNumberValue = secondNumber.value;
+
+      // string => number
+      // "1111" => 1111
+      const convertedFirstNumber = parseInt(firstNumberValue);
+      const convertedSecondNumber = parseInt(secondNumberValue);
+      finalSum.innerText = convertedFirstNumber + convertedSecondNumber;
+    }
+  </script>
+</html>
